@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - SkillHance</title>
+    
+    <!-- Using Google's Poppins font for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for all the cool icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a2a3a; /* Dark blue-grey background */
+            color: #e1e8f0; /* Light, soft text color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Animated Particle Background --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keep it behind everything else */
+        }
+
+        /* --- Registration Card --- */
+        .register-card {
+            background: rgba(26, 42, 58, 0.6); /* Semi-transparent glass effect */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* For Safari */
+            border: 1px solid rgba(110, 211, 207, 0.3); /* Subtle accent border */
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            /* A nice little animation to make it pop up */
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-card-header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #6ed3cf; /* A nice glow for the title */
+        }
+
+        .register-card-header p {
+            font-size: 1rem;
+            color: #e1e8f0;
+            opacity: 0.8;
+        }
+
+        /* --- Form Styles --- */
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- Input Fields --- */
+        .input-group {
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(110, 211, 207, 0.3);
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* When any input inside the group is focused, give the whole group a glow */
+        .input-group:focus-within {
+            border-color: #6ed3cf;
+            box-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            /* Smooth transition for width changes */
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        /* The little divider line between the password fields */
+        .dual-input-group .input-wrapper:first-child::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: rgba(110, 211, 207, 0.3);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .dual-input-group:focus-within .input-wrapper:first-child::after {
+            background-color: #6ed3cf;
+            box-shadow: 0 0 4px #6ed3cf;
+        }
+
+        /* Hide the divider when one input expands */
+        .dual-input-group .input-wrapper.expanded-width:first-child::after {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 15px 20px 15px 45px; /* Padding to make space for the icon */
+            background: transparent;
+            border: none;
+            color: #e1e8f0;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: rgba(225, 232, 240, 0.5);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(225, 232, 240, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        /* Make the icon light up with the accent color on focus */
+        .input-field:focus + i {
+            color: #6ed3cf;
+        }
+        
+        /* Classes for the password field animation */
+        .input-wrapper.default-width { width: 50%; }
+        .input-wrapper.expanded-width { width: 65%; }
+        .input-wrapper.shrunk-width { width: 35%; }
+
+        /* --- Checkbox and Links --- */
+        .form-options {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: 5px;
+        }
+
+        .terms-agreement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        /* Hide the default checkbox */
+        .terms-agreement input { display: none; }
+
+        /* Our custom checkbox */
+        .terms-agreement .checkbox {
+            width: 18px;
+            height: 18px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(110, 211, 207, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        /* The checkmark icon inside */
+        .terms-agreement .checkbox i {
+            color: #6ed3cf;
+            font-size: 12px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+        }
+        
+        /* Style for when the checkbox is checked */
+        .terms-agreement input:checked + .checkbox {
+            background: #6ed3cf;
+            border-color: #6ed3cf;
+        }
+
+        .terms-agreement input:checked + .checkbox i {
+            opacity: 1;
+            transform: scale(1);
+            color: #1a2a3a; /* Use the dark bg color for the checkmark */
+        }
+
+        .terms-link {
+            color: #6ed3cf;
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .terms-link:hover { text-shadow: 0 0 25px rgba(110, 211, 207, 0.5); }
+
+        /* --- Error Message --- */
+        .error-message {
+            color: #ff6b6b; /* A nice, visible red for errors */
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: -10px; /* Pull it a bit closer to the inputs */
+            margin-bottom: -5px;
+            display: none; /* Hidden by default */
+            transition: opacity 0.3s ease;
+        }
+
+        /* --- Buttons & Final Link --- */
+        .signup-button {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: #6ed3cf;
+            color: #1a2a3a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(110, 211, 207, 0.2);
+        }
+
+        .signup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(110, 211, 207, 0.5);
+        }
+        
+        .signup-button:active { transform: translateY(0); }
+
+        .login-link {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .login-link a {
+            color: #6ed3cf;
+            font-weight: 600;
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .login-link a:hover { text-shadow: 0 0 25px rgba(110, 211, 207, 0.5); }
+    </style>
+</head>
+
+<body>
+    <!-- This canvas is for the cool animated background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="register-card">
+        <div class="register-card-header">
+            <h1>Create Account</h1>
+            <p>Sign up to get started on your tech journey.</p>
+        </div>
+
+        <form id="register-form" class="register-form" novalidate>
+            <div class="input-group">
+                <div class="input-wrapper" style="width: 100%;">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="input-field">
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+
+            <div class="input-group dual-input-group" id="password-group">
+                <div class="input-wrapper" id="password-wrapper">
+                    <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="input-wrapper" id="repassword-wrapper">
+                    <input type="password" id="repassword" name="repassword" placeholder="Confirm Password" required class="input-field">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </div>
+            
+            <!-- This is where our new error message will appear -->
+            <p id="error-message" class="error-message"></p>
+
+            <div class="form-options">
+                <label class="terms-agreement">
+                    <input type="checkbox" name="terms" required>
+                    <span class="checkbox"><i class="fas fa-check"></i></span>
+                    I agree to the
+                </label>
+                <a href="#" class="terms-link">Terms & Conditions</a>
+            </div>
+
+            <button type="submit" class="signup-button">Sign Up</button>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="logincheck.html">Log In</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // --- Particle Canvas Animation ---
+        // This whole section just creates the moving dots in the background.
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles;
+
+        // A single particle
+        class Particle {
+            constructor(x, y, dirX, dirY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.dirX = dirX;
+                this.dirY = dirY;
+                this.size = size;
+                this.color = color;
+            }
+            // Method to draw the particle on the canvas
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            // Method to update the particle's position
+            update() {
+                // Bounce off the edges
+                if (this.x > canvas.width || this.x < 0) { this.dirX = -this.dirX; }
+                if (this.y > canvas.height || this.y < 0) { this.dirY = -this.dirY; }
+                // Move the particle
+                this.x += this.dirX;
+                this.y += this.dirY;
+                this.draw();
+            }
+        }
+
+        // Creates all the particles and puts them in an array
+        function initParticles() {
+            particles = [];
+            // Adjust particle count based on screen size
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * (innerWidth - size * 2));
+                let y = (Math.random() * (innerHeight - size * 2));
+                let dirX = (Math.random() * .4) - .2;
+                let dirY = (Math.random() * .4) - .2;
+                let color = 'rgba(110, 211, 207, 0.5)';
+                particles.push(new Particle(x, y, dirX, dirY, size, color));
+            }
+        }
+
+        // Draws lines between nearby particles
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let distance = Math.sqrt(Math.pow(particles[a].x - particles[b].x, 2) + Math.pow(particles[a].y - particles[b].y, 2));
+                    // If particles are close enough, draw a line
+                    if (distance < (canvas.width / 7)) {
+                        opacityValue = 1 - (distance / 150); // Line fades the further apart they are
+                        ctx.strokeStyle = `rgba(110, 211, 207, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // The main animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+            }
+            connectParticles();
+        }
+
+        // Adjust canvas and particles when the window is resized
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            initParticles();
+        });
+
+        // Let's get the party started
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        initParticles();
+        animate();
+
+
+        // --- Interactive Form Logic ---
+        const passwordInput = document.getElementById("password");
+        const repasswordInput = document.getElementById("repassword");
+        const passwordWrapper = document.getElementById("password-wrapper");
+        const repasswordWrapper = document.getElementById("repassword-wrapper");
+        const passwordGroup = document.getElementById("password-group");
+
+        // This function handles the cool animation for the password fields
+        function updatePasswordStyles(focusedElementId) {
+            // Reset classes first
+            passwordWrapper.className = "input-wrapper";
+            repasswordWrapper.className = "input-wrapper";
+            
+            // Then add the correct classes based on which input is focused
+            if (focusedElementId === "password") {
+                passwordWrapper.classList.add("expanded-width");
+                repasswordWrapper.classList.add("shrunk-width");
+            } else if (focusedElementId === "repassword") {
+                repasswordWrapper.classList.add("expanded-width");
+                passwordWrapper.classList.add("shrunk-width");
+            } else { // Neither is focused, so they should be equal
+                passwordWrapper.classList.add("default-width");
+                repasswordWrapper.classList.add("default-width");
+            }
+        }
+
+        // Set the initial state
+        updatePasswordStyles(null);
+
+        passwordInput.addEventListener("focus", () => updatePasswordStyles("password"));
+        repasswordInput.addEventListener("focus", () => updatePasswordStyles("repassword"));
+
+        // When focus leaves the entire password group, reset the styles
+        passwordGroup.addEventListener('focusout', (e) => {
+            if (!passwordGroup.contains(e.relatedTarget)) {
+                updatePasswordStyles(null);
+            }
+        });
+
+
+        // --- Form Submission ---
+        const registerForm = document.getElementById('register-form');
+        const errorMessage = document.getElementById('error-message');
+
+        registerForm.addEventListener('submit', function(e) {
+            // Stop the form from submitting the old-fashioned way
+            e.preventDefault(); 
+            
+            // Hide any previous error messages
+            errorMessage.style.display = 'none';
+
+            const password = passwordInput.value;
+            const repassword = repasswordInput.value;
+
+            // Check if passwords match
+            if (password !== repassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                errorMessage.style.display = 'block';
+                return; // Stop the function here
+            }
+            
+            // If everything is okay, you can proceed with form submission
+            // For this demo, we'll just log it and redirect.
+            console.log('Form is valid! Submitting...');
+            window.location.href = "logincheck.html"; 
+        });
+
+        // A nice little touch: hide the error message as soon as the user starts correcting it.
+        passwordInput.addEventListener('input', () => errorMessage.style.display = 'none');
+        repasswordInput.addEventListener('input', () => errorMessage.style.display = 'none');
+
+    </script>
+</body>
+</html>

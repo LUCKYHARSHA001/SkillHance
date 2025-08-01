@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngiPaths | Document Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resourcestyles.css">
+</head>
+
+<body>
+    
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="main-header" id="main-header">
+            <nav class="container main-nav">
+                <a href="../CSE/main.html" class="logo">SkillHance</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="../CSE/main.html">Home</a></li>
+                    <!-- <li><a href="#documents">Documents</a></li> -->
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Documents Section -->
+            <section id="documents" class="section">
+                <div class="container">
+                    <h2 class="section-title animated-item">Document Showcase</h2>
+                    <p class="section-subtitle animated-item">
+                        Explore our featured documents. Click on any card to view the PDF in a seamless overlay.
+                    </p>
+                    <div class="cards-grid">
+                        <!-- PDF Card 1 -->
+                        <div class="tech-card animated-item">
+                            <div class="icon">
+                               <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3>Introduction to Algorithms</h3>
+                            <p>~by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein (CLRS)</p>
+                            <button class="view-pdf-btn" data-pdf-src="https://cdn.manesht.ir/19908___Introduction%20to%20Algorithms.pdf" data-pdf-title="Introduction to Algorithms">
+                                View Document
+                            </button>
+                       </div>
+
+                       <!-- PDF Card 2 -->
+                       <div class="tech-card animated-item">
+                            <div class="icon">
+                               <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3>Code: The Hidden Language of Computer Hardware and Software</h3>
+                            <p>~by Charles Petzold</p>
+                            <button class="view-pdf-btn" data-pdf-src="https://delong.typepad.com/files/code.pdf" data-pdf-title="Code: The Hidden Language of Computer Hardware and Software">
+                                View Document
+                            </button>
+                       </div>
+
+                       <!-- PDF Card 3 -->
+                       <div class="tech-card animated-item">
+                            <div class="icon">
+                               <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3>The Pragmatic Programmer: From Journeyman to Master</h3>
+                            <p>~by Andrew Hunt and David Thomas</p>
+                            <button class="view-pdf-btn" data-pdf-src="https://cdn.ttgtmedia.com/rms/pdf/pragmatic_programmer_ch4.pdf" data-pdf-title="The Pragmatic Programmer: From Journeyman to Master">
+                                View Document
+                            </button>
+                       </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-image animated-item">
+                            <img src="Gemini_Generated_Image_dpdz1zdpdz1zdpdz.png"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/450x300/1a2a3a/6ed3cf?text=Our+Mission';"
+                                 alt="A diverse group of students collaborating and learning">
+                        </div>
+                        <div class="about-text animated-item">
+                            <h2>Our Mission: To Provide the Best Resources</h2>
+                            <p>At SkillHance, our core mission is to curate and deliver the most effective and up-to-date resources for aspiring engineers. We meticulously select, create, and organize content to ensure you have access to the knowledge that truly matters in today's competitive landscape.</p>
+                            <p>We are dedicated to building a comprehensive library of expert-vetted guides, tutorials, and career roadmaps. Our goal is to empower you with the best tools and information, helping you build a strong foundation and accelerate your journey toward a successful career in engineering.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="container">
+                    <h2 class="section-title animated-item">Have Questions? Reach Out!</h2>
+                    <p class="section-subtitle animated-item">Whether you're a student, educator, or industry professional, we'd love to connect.</p>
+                    <form class="contact-form animated-item">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Question or Feedback</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <div id="pdfModal">
+        <div id="pdfModalContainer">
+            <div class="modal-header">
+                <h3 id="pdfTitle"></h3>
+                <button id="closeModalBtn">
+                    <svg stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfIframe" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+  <script src="resourcescript.js"></script>
+</body>
+
+</html>

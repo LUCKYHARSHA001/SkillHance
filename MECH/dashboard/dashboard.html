@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MECH Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="dashboard.css"> 
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "YOUR_CLARITY_PROJECT_ID"); 
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>MECH Dashboard</h1>
+        </div>
+        <div class="header-center">
+            <a href="../main.html" class="logo">SkillHance</a> 
+        </div>
+        <div class="header-right">
+            <div class="profile-section">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <span class="user-name">Jai Harsha</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <button class="sidebar-button active" data-content="concepts">
+                <i class="fas fa-lightbulb sidebar-icon"></i>
+                MECH Concepts
+            </button>
+            <button class="sidebar-button" data-content="technologies">
+                <i class="fas fa-microchip sidebar-icon"></i>
+                MECH Technologies
+            </button>
+            <button class="sidebar-button" data-content="languages">
+                <i class="fas fa-code sidebar-icon"></i>
+                Programming Languages
+            </button>
+            <button class="sidebar-button" data-content="cheatsheets">
+                <i class="fas fa-list-check sidebar-icon"></i>
+                Cheat Sheets Progress
+            </button>
+        </aside>
+
+        <main class="content-area">
+            <section id="concepts-content" class="dashboard-section active">
+                <h2>MECH Concepts for Monitoring</h2>
+                <div class="card-grid">
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Thermodynamics</div>
+                        <span class="card-percentage">88%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.8;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Fluid Mechanics</div>
+                        <span class="card-percentage">78%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.6;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Solid Mechanics</div>
+                        <span class="card-percentage">82%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.7;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Heat Transfer</div>
+                        <span class="card-percentage">90%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.9;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Machine Design</div>
+                        <span class="card-percentage">85%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.75;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Manufacturing Processes</div>
+                        <span class="card-percentage">70%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.5;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Engineering Drawing</div>
+                        <span class="card-percentage">91%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.85;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="technologies-content" class="dashboard-section">
+                <h2>Core MECH Technologies</h2>
+                <div class="card-grid">
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">CAD/CAM/CAE</div>
+                        <span class="card-percentage">93%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.75;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Robotics & Automation</div>
+                        <span class="card-percentage">90%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.9;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Additive Manufacturing (3D Printing)</div>
+                        <span class="card-percentage">85%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.8;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">HVAC Systems</div>
+                        <span class="card-percentage">75%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.6;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="languages-content" class="dashboard-section">
+                <h2>Programming Languages</h2>
+                <div class="card-grid">
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">MATLAB (for Simulations)</div>
+                        <span class="card-percentage">88%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.7;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">Python (Data Analysis)</div>
+                        <span class="card-percentage">95%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.95;"></div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-content-wrapper">C++ (for Robotics)</div>
+                        <span class="card-percentage">80%</span>
+                        <div class="heatmap-overlay" style="--heatmap-intensity: 0.65;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cheatsheets-content" class="dashboard-section">
+                <h2>Cheat Sheets Progress</h2>
+                <div class="progress-container">
+                    <div class="progress-item">
+                        <span>Machine Design:</span>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 70%;"></div>
+                        </div>
+                        <span class="progress-text">28/40 Sums Completed (70%)</span>
+                        <div class="heatmap-overlay small" style="--heatmap-intensity: 0.7;"></div>
+                    </div>
+                    <div class="progress-item">
+                        <span>Fluid Dynamics:</span>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 45%;"></div>
+                        </div>
+                        <span class="progress-text">20/45 Sums Completed (45%)</span>
+                        <div class="heatmap-overlay small" style="--heatmap-intensity: 0.5;"></div>
+                    </div>
+                    <div class="progress-item">
+                        <span>Thermodynamics:</span>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 85%;"></div>
+                        </div>
+                        <span class="progress-text">34/40 Sums Completed (85%)</span>
+                        <div class="heatmap-overlay small" style="--heatmap-intensity: 0.9;"></div>
+                    </div>
+                </div>
+                <button class="update-progress-btn">Update Progress</button>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer1">
+            <div class="logo">
+                <a href="#">SkillHance</a>
+            </div>
+            <div class="footer-text">
+                <ul>
+                    <li><a href="#"> ChatBot</li>
+                    <li><a href="feedback/feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-text">
+                <ul>
+                    <li><a href="#">Home</li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-text">
+                <ul>
+                    <li><a href="#">About-Us</li>
+                    <li><a href="#">Contact-Us</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr width="80%" />
+        <div class="footer2">
+            <div class="icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="copy-right">
+                <p>&copy 2025 SkillHance | All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script> 
+</body>
+</html>
